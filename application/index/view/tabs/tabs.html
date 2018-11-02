@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>发布作品</title>
+    <link type="text/css" rel="stylesheet" href="index_css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="index_css/style.css" />
+    <link rel="stylesheet" href="index_css/addpic.css" />
+    <link rel="stylesheet" href="index_css/iconfont.css" />
+    <!-- <script src="/layer/jquery-1.8.3.min.js"></script>-->
+    <script type="text/javascript" src="index_js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="index_js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="index_js/addcaipu.js"></script>
+    <script src="index_js/setday.js"></script>
+    <!--	  <script src="/e/data/html/postinfo.js"></script>
+  -->
+    <script src="index_js/layer.min.js"></script>
+    <script type="text/javascript">
+        function EmpireCMSQInfoPostFun() {
+
+            var flag = true;
+            $("input[name='mbigpic[]']").each(function(index) {
+                if($(this).val() == "") {
+                    flag = false;
+                }else{
+                    flag=true;
+                }
+            });
+            if($(".workname").val()==""){
+                alert("请输入作品标题");
+            }else if(flag == true) {
+                //$("input.filePrew").remove();
+                $("input.filePrew").val("");
+                $("#addform").submit();
+            }
+            //$("input.filePrew").val("");
+            //$("#addform").submit();
+
+            //	return false;
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        window.onresize = function() {
+            document.documentElement.style.fontSize = document.documentElement.clientWidth / 640 * 100 + 'px';
+        };
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 640 * 100 + 'px';
+    </script>
+    <!--[if lte IE8]><script>window.location.href='http://cdn.dmeng.net/upgrade-your-browser.html?referrer='+location.href;</script><![endif]-->
+    <style>
+        body {
+            background: #f6f6f6;
+        }
+
+        *,
+        :before,
+        :after {
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border: none;
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div,
+        li {
+            font-size: 0;
+        }
+
+        @media screen and (min-width: 750px) {
+            html,
+            body {
+                font-size: 118px !important;
+            }
+        }
+        .clearfix{
+            *zoom:1;
+        }
+        .clearfix:before,
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .layout {
+            min-width: 300px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .head {
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #d6d6d6;
+            position: relative;
+        }
+
+        .head p {
+            padding: 0.2218rem 0;
+            font-size: 0.3071rem;
+            color: #262626;
+            text-align: center;
+        }
+
+        .add-imgs img {
+            width: 100%;
+        }
+
+        .content {
+            padding-left: 2.66%;
+            background: #fff;
+        }
+
+        .content li {
+            padding-bottom: 0.2559rem;
+            padding-top: 0.2559rem;
+            border-bottom: 1px solid rgba(0, 0, 0, .13);
+        }
+
+        .content span {
+            font-size: 0.2901rem;
+            color: #999999;
+        }
+
+        .works-show {
+            position: relative;
+        }
+
+        .works-show span {
+            float: left;
+            display: block;
+            color: #333;
+            font-size: 0.2901rem;
+        }
+
+        .works-show>div {
+            width: 3%;
+            float: right;
+            margin-right: 0.2901rem;
+            margin-top: 0.1194rem;
+        }
+
+        .works-show div img {
+            width: 100%;
+        }
+
+
+        .works-show-xuan li {
+
+        }
+
+        .works-show-xuan li p {
+            line-height: 0.6655rem;
+            font-size: 0.273rem;
+            display: block;
+            border-bottom: 1px solid rgba(0, 0, 0, .13);
+            color: #333;
+            float: left;
+            width: 92.1%;
+            margin-left: 3.3%;
+        }
+
+        .works-show-xuan li div {
+            width: 4.5%;
+            cursor: pointer;
+            float: left;
+            margin-top: 0.1706rem;
+        }
+
+        .works-show-xuan li div img {
+            width: 100%;
+        }
+
+        .workname {
+            display: block;
+            border: none;
+            outline: none;
+            height: 100%;
+            font-size: 0.2901rem;
+            background: transparent;
+        }
+
+        #mpicname1 {}
+
+        .iconclose {
+            font-size: 0.1706rem !important;
+            border-radius: 5px;
+            background: #8c8c8c;
+            text-align: center;
+            color: #fff;
+            display: block;
+            width: 0.2559rem;
+            height: 0.2559rem;
+            line-height: 0.2559rem;
+        }
+
+        .iconadd {
+            display: block;
+            font-size: 0.2559rem !important;
+            padding: 0 0.1279rem;
+            background: #8c8c8c;
+            color: #fff;
+            border-radius: 0.0426rem;
+        }
+
+        .fabu-works {
+            text-align: center;
+            font-size: 0.3071rem;
+            width: 6.058rem;
+            margin: 0 auto;
+            height: 0.7509rem;
+            line-height: 0.7509rem;
+            color: #fff;
+            background: url(index_img/button-bg.png) no-repeat center center;
+            background-size: 100%;
+            border: none;
+            border-radius: 0.0426rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #buzhoupic>tr {
+            padding: 0.1279rem 0;
+            margin-bottom: 0.7679rem;
+            background: #fff;
+        }
+
+        .work-backs img {
+            width: 0.1962rem;
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0.1706rem;
+        }
+
+        .work-mores img {
+            width: 0.3157rem;
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0.1706rem;
+        }
+
+        .scaption>textarea {
+            font-size: 0.2218rem;
+        }
+
+        .scaption>textarea::-webkit-input-placeholder {
+            font-size: 0.2218rem;
+            color: #bbbbbb;
+        }
+
+        .scaption>textarea:-moz-placeholder {
+            font-size: 0.2218rem;
+            color: #bbbbbb;
+        }
+
+        .scaption>textarea::-moz-placeholder {
+            font-size: 0.2218rem;
+            color: #bbbbbb;
+        }
+
+        .scaption>textarea:-ms-input-placeholder {
+            font-size: 0.2218rem;
+            color: #bbbbbb;
+        }
+
+        .show-xuan-list input {
+            font-size: 0.273rem;
+            background: transparent;
+            border: none;
+            line-height: 0.6655rem;
+            height: 0.6655rem;
+            margin-left: 3.3%;
+            border-bottom: 1px solid rgba(0, 0, 0, .13);
+            width: 92.1%;
+        }
+        .iconclose {
+            font-size: 0.1706rem !important;
+            border-radius: 0.0426rem;
+            background: #8c8c8c;
+            text-align: center;
+            color: #fff;
+            display: block;
+            width: 0.2559rem;
+            height: 0.2559rem;
+            line-height: 0.2659rem;
+        }
+
+        .fixeds {
+            position: fixed;
+            z-index: 99999;
+            width: 100%;
+            max-width: 750px;
+            min-width: 320px;
+            margin: 0 auto;
+            top: 0;
+        }
+
+        /*添加*/
+        #buzhoupic>div{
+            position: relative;
+            padding: 0.1279rem 0;
+            margin-bottom: 0.7679rem;
+            background: #fff;
+        }
+        .sminip{
+            text-align: left;
+            margin-left: 0.5399rem;
+        }
+        .scaption{
+            text-align: left;
+            position: relative;
+        }
+
+        .work-text{
+            position: relative;
+        }
+        .ie-show{
+            font-size: 0.2901rem;
+            position: absolute;
+            left: 0;
+            top: 0.2559rem;
+            line-height: 0.2901rem;
+            color: #999;
+            display: block;
+            z-index: 0;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <header class="navtop navbar-fixed-top">
+        <div class="logo">大锅后台管理</div>
+        <div class="nav_right">
+            <a href="javascript:void(0)"><img src="index_img/tc-back.png"></a>
+        </div>
+    </header>
+    <div class="central">
+        <!--left-->
+        <div class="main_left">
+            <div class="pc_user">
+                <dl class="clearfix">
+                    <dt><!--img--></dt>
+                    <dd>Admin</dd>
+                </dl>
+            </div>
+            <ul class="sideMen navlf_list">
+                <li class="active"><a href="javascript:void(0)">店铺加盟<i><!--img--></i></a></li>
+                <li><a href="javascript:void(0)">店铺加盟<i><!--img--></i></a></li>
+                <li><a href="javascript:void(0)">店铺加盟<i><!--img--></i></a></li>
+            </ul>
+        </div>
+        <div class="main_right">
+            <!--上传-->
+            <div class="top_sc">
+<div class="layout" style="padding-bottom: 0.0583rem;">
+    <form name="add" id="addform" method="POST" enctype="multipart/form-data" action="{:url('index/recom/upimgs')}">
+
+        <div class="duotu" style="width:100%;margin-top:0.2559rem;margin-bottom: 0.6653rem;">
+            <div id="buzhoupic">
+                <div class="clearfix" style="">
+                    <div class="sminip" data-label="">
+                        <input name="mbigpic[]" type="hidden" id="mbigpic1" value="" />
+                        <img src="index_img/addclick.png" id="pic1" />
+                        <input name="mbigpfile[]" type="hidden" id="mmbigpic1" />
+                        <a class="btn_addPic" href="javascript:void(0);"><span>&nbsp;</span> <input class="filePrew" type="file" name="mbigpfile[]" cmss="1" id="file1" onchange="change('pic1','file1')" /> </a>
+
+
+                        <span style="display:none"> <input name="msmallpic[]" type="text" id="msmallpic1" ondblclick="SpOpenChFile(1,'msmallpic1');" /> <input type="file" name="msmallpfile[]" size="15" /> </span>
+                    </div>
+                    <div class="scaption" data-label="">
+                        <textarea type="text" class="te" name="mpicname1" placeholder="点击添加文字"></textarea>
+                    </div>
+                    <div data-label="" class="deletes">
+                        <a href="javascript:;" onclick="add_pictr()" class="add-btn" title="添加图片"><i class="iconfont iconadd"></i></a>
+                        <a href="javascript:;" onclick="del(this);" class="del-btn" title="删除"><i class="iconfont iconclose"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var OueXrmsE1 = 1;
+
+            function add_pictr() {
+                OueXrmsE1++;
+                var UJBkeZ2 = window["document"]["createElement"]("div");
+                UJBkeZ2["setAttribute"]("class", "clearfix");
+                var mekC4 = window["document"]["createElement"]("div");
+                mekC4["setAttribute"]("class", "sminip");
+                mekC4["setAttribute"]("data-label", "");
+                var twUQlsRt5 = window["document"]["createElement"]("div");
+                twUQlsRt5["setAttribute"]("class", "scaption");
+                twUQlsRt5["setAttribute"]("data-label", "");
+                mekC4["innerHTML"] = '<input name=mbigpic[] type=hidden  id="mbigpic' + OueXrmsE1 + '"><img src="index_img/addclick.png" id="pic' + OueXrmsE1 + '"><input name=mbigpfile[] type=hidden id="mmbigpic' + OueXrmsE1 + '" ><a class=btn_addPic href="javascript:void(0);"><span>&nbsp;</span><input  class=filePrew  type=file cmss="' + OueXrmsE1 + '"  name=mbigpfile[] id="file' + OueXrmsE1 + '" onchange="change(\'pic' + OueXrmsE1 + '\',\'file' + OueXrmsE1 + '\')"></a><span style=display:none><input name=msmallpic[] type=text id="msmallpic' + OueXrmsE1 + '" ><input type=file name=msmallpfile[] size=15></span>';
+
+                twUQlsRt5["innerHTML"] = '<textarea type="text" class="te" name="mpicname1" placeholder="点击添加文字"></textarea>';
+                var rNfSGgs6 = window["document"]["createElement"]("div");
+                rNfSGgs6["setAttribute"]("data-label", "");
+                rNfSGgs6["innerHTML"] = "<a href='javascript:;' onclick='add_pictr()' class='add-btn' title='添加'><i class='iconfont iconadd'>&#xe765;</i></a><a href='javascript:;' onclick='del(this)' class='del-btn' title='删除'><i class='iconfont iconclose'>&#xe616;</i></a>";
+                var QsFUNNsVJ7 = window["document"]["getElementById"]("buzhoupic");
+                QsFUNNsVJ7["appendChild"](UJBkeZ2);
+                UJBkeZ2["appendChild"](mekC4);
+                UJBkeZ2["appendChild"](twUQlsRt5);
+                UJBkeZ2["appendChild"](rNfSGgs6);
+
+                $('.filePrew').on("change", function() {
+                    var value = $(this).val();
+
+                    value = value.split("\\")[2].split(".")[0];
+                    //  alert(value);  alert($(this).index(".filePrew"));
+                    //var id=$(this).attr("id").replace("file","");
+                    // alert($(this).attr("id"));
+                    //	alert($('.filePrew').index(this));
+                    //  alert($(this).attr("cmss"));
+                    $(".te").eq($(this).attr("cmss") - 1).val(value);
+                })
+            }
+
+            function del(gQbztauy8) {
+                var esmcTNENe9 = window["document"]["getElementById"]('buzhoupic');
+                var Hy$iN10 = gQbztauy8["parentNode"]["parentNode"];
+                if(esmcTNENe9["childNodes"]["length"] > 3) {
+                    Hy$iN10["parentNode"]["removeChild"](Hy$iN10);
+                } else {
+                    window["alert"]("图片至少有一项，不能再删了！");
+                }
+            }
+        </script>
+        <!--<input type="hidden" value="MAddInfo" name="enews" />
+        <input type="hidden" value="0" name="classid" />
+        <input name="id" type="hidden" id="id" value="" />
+        <input type="hidden" value="1503300195" name="filepass" />
+        <input name="mid" type="hidden" id="mid" value="9" />
+        <input type="hidden" name="gotoinfourl" value="1" />
+        <input type="hidden" name="editgotoinfourl" value="1" />
+        <input type="hidden" value="" name="classid" class="number" />
+        <input type="hidden" value="" name="Activity" id="Activity" class="number2" />-->
+        <input name="addnews" value="&nbsp;" type="submit" class="fabu-works" />
+    </form>
+
+</div>
+            </div>
+            <div class="container-fluid main_cont">
+<!--  <script src="js/jquery-3.1.1.min.js"></script>-->
+                <div class="input-group input-group-md sosuo">
+                    <input class="form-control" placeholder="Please enter search search field" />
+                    <span class="input-group-btn">
+								<button class="btn btn-info btn-search">搜索</button>
+							</span>
+                </div>
+                <div class="list-top">
+                    <button type="button" class="btn btn-primary btn-sm">新增</button>
+                    <button type="button" class="btn btn-success btn-sm">修改</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr class="success">
+                                <th><input type="checkbox" /></th>
+                                <th>第一列</th>
+                                <th>第二列</th>
+                                <th>第三列</th>
+                                <th>第四列</th>
+                                <th>第五列</th>
+                                <th>第六列</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>姓名</td>
+                                <td>年龄</td>
+                                <td>性别</td>
+                                <td>地址</td>
+                                <td>邮箱</td>
+                                <td>微博</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary">修改</button>
+                                    <button type="button" class="btn btn-sm btn-success">添加</button>
+                                    <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>姓名</td>
+                                <td>年龄</td>
+                                <td>性别</td>
+                                <td>地址</td>
+                                <td>邮箱</td>
+                                <td>微博</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary">修改</button>
+                                    <button type="button" class="btn btn-sm btn-success">添加</button>
+                                    <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>姓名</td>
+                                <td>年龄</td>
+                                <td>性别</td>
+                                <td>地址</td>
+                                <td>邮箱</td>
+                                <td>微博</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary">修改</button>
+                                    <button type="button" class="btn btn-sm btn-success">添加</button>
+                                    <button type="button" class="btn btn-sm btn-danger">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page_btm">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer navbar-fixed-bottom">&copy你认我做大哥，我教你梳马鞭--2018</footer>
+<script>
+    $(function() {
+
+        $('.filePrew').on("change", function() {
+            var value = $(this).val();
+            value = value.split("\\")[2].split(".")[0];
+            // $(".te").eq($(this).index()-1).val(value);
+            $(".te").eq($(this).attr("cmss") - 1).val(value);
+        })
+        $(".namezhan1").click(function() {
+            if($(".works-show-xuan").eq(0).is(":hidden")) {
+                $(".zhanqus").attr("src", "images/down-jt.png");
+                $(".works-show-xuan").eq(0).show();
+            } else {
+                $(".zhanqus").attr("src", "images/right-jt.png");
+                $(".works-show-xuan").eq(0).hide();
+            }
+        });
+
+        $(".huodongs").click(function() {
+            if($(".works-show-xuan").eq(1).is(":hidden")) {
+                $(this).attr("src", "images/down-jt.png");
+                $(".works-show-xuan").eq(1).show();
+            } else {
+                $(this).attr("src", "images/right-jt.png");
+                $(".works-show-xuan").eq(1).hide();
+            }
+        });
+        $(".namezhan2").click(function() {
+            if($(".works-show-xuan").eq(1).is(":hidden")) {
+                $(".huodongs").attr("src", "images/down-jt.png");
+                $(".works-show-xuan").eq(1).show();
+            } else {
+                $(".huodongs").attr("src", "images/right-jt.png");
+                $(".works-show-xuan").eq(1).hide();
+            }
+        });
+
+        $(".zhanqulist li").each(function() {
+            $(this).click(function() {
+                $(".xuan-list-img").attr("src", "images/shoot-zhan0.png");
+                $(".xuan-list-img").eq($(this).index()).attr("src", "images/shoot-zhan1.png");
+                $(".works-show-xuan").hide();
+                $(".right-tj").attr("src", "images/right-jt.png");
+                //var txt=$(".show-xuan-list p").eq($(this).index()).text();
+                var txt = $(".zhanqulist input").eq($(this).index()).attr("placeholder");
+                var values = $(".zhanqulist input").eq($(this).index()).val(); //获取
+                $(".number").val(txt); //赋值给
+                //console.log($(".number").val());//输出点击后的value值
+                $(".namezhan1").html(values);
+
+            })
+        });
+
+        $(".huodonglist li").each(function() {
+            $(this).click(function() {
+                $(".huodonglist img").attr("src", "images/shoot-zhan0.png");
+                $(".huodonglist img").eq($(this).index()).attr("src", "images/shoot-zhan1.png");
+                $(".works-show-xuan").hide();
+                $(".right-tj").attr("src", "images/right-jt.png");
+                //var txts=$(".huodonglist p").eq($(this).index()).text();
+                var txt2 = $(".huodonglist input").eq($(this).index()).attr("placeholder");
+                var values2 = $(".huodonglist input").eq($(this).index()).val(); //获取
+                //console.log(txt2);
+                $(".number2").val(txt2); //赋值给
+                $(".namezhan2").html(values2);
+            })
+        });
+
+        //show label
+        //兼容不支持placeholder的浏览器[ie浏览器，并且10以下均采用替代方式处理]
+        if ((navigator.appName == "Microsoft Internet Explorer") && (document.documentMode < 10 || document.documentMode == undefined)) {
+            $(".ie-show").show();
+            $(".workname").focus(function(){
+                $(".ie-show").hide();
+            });
+            $(".workname").blur(function(){
+                $(".ie-show").show();
+            });
+            $(".ie-show").click(function(){
+                $(this).hide();
+            })
+        }else{
+            $(".ie-show").hide();
+        }
+    })
+</script>
+</div>
+</body>
+</html>
